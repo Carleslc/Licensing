@@ -35,7 +35,11 @@ class LicenseController < ApplicationController
 
   def fetch_license
     @license = @product.licenses.find_by_key(params[:key])
-    render json: { message: t('invalid_license') }, status: :unauthorized unless @license
+    if @license.nil?
+      render json: { message: t('invalid_license') }, status: :unauthorized
+    elsif @license.expired?
+      render json: { message: t('expired').gsub('#', @license.expiration.to_s)}, status: :unauthorized
+    end
   end
 
   def fetch_device

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170901163813) do
+ActiveRecord::Schema.define(version: 20170902055225) do
 
   create_table "activations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text     "fingerprint", limit: 65535, null: false
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20170901163813) do
     t.integer  "product_id"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.date     "expiration"
     t.index ["key"], name: "index_licenses_on_key", unique: true, using: :btree
   end
 

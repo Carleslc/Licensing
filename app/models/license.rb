@@ -11,8 +11,13 @@ class License < ApplicationRecord
     activations.size >= quantity
   end
 
+  def expired?
+    return false if expiration.nil?
+    expiration < Date.current
+  end
+
   def activate(fingerprint)
-    activations.create!(fingerprint: fingerprint) unless reached_limit?
+    activations.create!(fingerprint: fingerprint) unless reached_limit? || expired?
   end
 
   def as_json(options = nil)
