@@ -24,3 +24,4 @@ en:
   invalid_license: "Invalid License"
   limit_reached: "License has reached its limit of # activations"
   expired: "License has expired (#)"
+  trial_limit: "You have already redeemed one trial license"

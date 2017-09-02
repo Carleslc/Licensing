@@ -23,7 +23,11 @@ class LicenseController < ApplicationController
     trial_name = 'Trial-' + @device
     activated = @product.licenses.find_by_name(trial_name)
     if activated
-      render json: activated.activations.first, status: :ok
+      if activated.expired?
+        render json: message('trial_limit'), status: :unauthorized
+      else
+        render json: activated.activations.first, status: :ok
+      end
       return
     end
     duration = params[:type] || 'short'
