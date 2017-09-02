@@ -1,5 +1,5 @@
 class License < ApplicationRecord
-  after_save :serialize_key
+  after_create :serialize_key
   belongs_to :product
   has_many :activations, dependent: :destroy
 
@@ -24,7 +24,9 @@ class License < ApplicationRecord
   private
 
   def serialize_key
-    key.upcase!.insert(4, '-').insert(9, '-').insert(14, '-').insert(19, '-').insert(24, '-')
+    serial = key.upcase
+    update(key: serial.insert(4, '-').insert(9, '-')
+                    .insert(14, '-').insert(19, '-').insert(24, '-'))
   end
 
 end
