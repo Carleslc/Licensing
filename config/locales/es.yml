@@ -24,4 +24,3 @@ es:
   invalid_license: "Licencia Inválida"
   limit_reached: "La licencia ha alcanzado su límite de # usos"
   expired: "La licencia ha expirado (#)"
-  trial_limit: "Ya has pedido una licencia de prueba"

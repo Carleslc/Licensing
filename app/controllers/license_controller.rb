@@ -21,14 +21,15 @@ class LicenseController < ApplicationController
   # GET /products/:name/trial?fingerprint=#[&type=(short|long)&lang=(en|es)]
   def trial
     trial_name = 'Trial-' + @device
-    if @product.licenses.exists?(name: trial_name)
-      render json: message('trial_limit'), status: :unauthorized
+    activated = @product.licenses.find_by_name(trial_name)
+    if activated
+      render json: activated.activations.first, status: :ok
       return
     end
     duration = params[:type] || 'short'
     days = duration == 'short' ? 7 : 30
-    license = @license.create!(name: trial_name, expiration: Date.current + days)
-    render json: license, status: :ok
+    @license = @product.licenses.create!(name: trial_name, expiration: Date.current + days)
+    activate
   end
 
   private
