@@ -6,6 +6,6 @@ class CreateActivations < ActiveRecord::Migration[5.0]
 
       t.timestamps
     end
-    add_index :activations, :fingerprint, unique: true, length: 50
+    add_index :activations, [:fingerprint, :license_id], unique: true, length: { fingerprint: 50 }
   end
 end

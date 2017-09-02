@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20170902055225) do
     t.integer  "license_id"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
-    t.index ["fingerprint"], name: "index_activations_on_fingerprint", unique: true, length: { fingerprint: 50 }, using: :btree
+    t.index ["fingerprint", "license_id"], name: "index_activations_on_fingerprint_and_license_id", unique: true, length: { fingerprint: 50 }, using: :btree
   end
 
   create_table "licenses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
