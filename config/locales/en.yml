@@ -22,5 +22,5 @@
 en:
   invalid_product: "Invalid Product"
   invalid_license: "Invalid License"
-  limit_reached: "License has reached its limit of # activations."
-  expired: "License has expired (#)."
+  limit_reached: "License has reached its limit of # activations"
+  expired: "License has expired (#)"
