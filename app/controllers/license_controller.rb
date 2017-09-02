@@ -64,7 +64,7 @@ class LicenseController < ApplicationController
 
   def message(message_id, substitution = nil)
     message = t(message_id)
-    message.gsub('#', substitution) if substitution
+    message = message.gsub('#', substitution) if substitution
     { message: message }
   end
 
