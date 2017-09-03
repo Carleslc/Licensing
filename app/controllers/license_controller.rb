@@ -57,7 +57,7 @@ class LicenseController < ApplicationController
     if @license.nil?
       render json: message('invalid_license'), status: :unauthorized
     elsif @license.expired?
-      render json: message('expired', @license.expiration.to_s), status: :unauthorized
+      render json: message('expired').merge(expiration: @license.expiration), status: :unauthorized
     end
   end
 

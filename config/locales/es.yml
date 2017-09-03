@@ -23,5 +23,5 @@ es:
   invalid_product: "Producto inválido"
   invalid_license: "Licencia inválida"
   limit_reached: "La licencia ha alcanzado su límite de # usos"
-  expired: "La licencia ha expirado (#)"
-  trial_limit: "Ya has pedido una licencia de prueba"
+  expired: "La licencia ha expirado"
+  trial_limit: "Ya has pedido una licencia de prueba anteriormente"
