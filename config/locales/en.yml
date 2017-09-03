@@ -20,8 +20,8 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  invalid_product: "Invalid Product"
-  invalid_license: "Invalid License"
+  invalid_product: "Invalid product"
+  invalid_license: "Invalid license"
   limit_reached: "License has reached its limit of # activations"
   expired: "License has expired (#)"
   trial_limit: "You have already redeemed one trial license"
