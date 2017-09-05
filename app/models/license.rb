@@ -13,7 +13,7 @@ class License < ApplicationRecord
 
   def expired?
     return false if expiration.nil?
-    expiration < Date.current
+    expiration < DateTime.current
   end
 
   def activate(fingerprint)

@@ -18,7 +18,7 @@ class LicenseController < ApplicationController
     render json: @license.activations, status: :ok
   end
 
-  # GET /products/:name/trial?fingerprint=#[&type=(short|long)&lang=(en|es)]
+  # GET /products/:name/trial?fingerprint=#[&type=(demo|short|long)&lang=(en|es)]
   def trial
     trial_name = 'Trial-' + @device
     activated = @product.licenses.find_by_name(trial_name)
@@ -30,9 +30,7 @@ class LicenseController < ApplicationController
       end
       return
     end
-    duration = params[:type] || 'short'
-    days = duration == 'short' ? 7 : 30
-    @license = @product.licenses.create!(name: trial_name, expiration: Date.current + days)
+    @license = @product.licenses.create!(name: trial_name, expiration: DateTime.current + fetch_days)
     activate
   end
 
@@ -64,6 +62,17 @@ class LicenseController < ApplicationController
   def fetch_device
     params.require(:fingerprint)
     @device = params[:fingerprint]
+  end
+
+  def fetch_days
+    duration = params[:type] || 'short'
+    if duration == 'demo'
+      3
+    elsif duration == 'short'
+      7
+    else
+      30
+    end
   end
 
   def message(message_id, substitution = nil)
