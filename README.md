@@ -2,6 +2,8 @@
 
 _Simple Rails App to add Licenses to your projects._
 
+[![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/carleslc)
+
 Manage licenses:
 
 1. Access to Database with `rails console`
